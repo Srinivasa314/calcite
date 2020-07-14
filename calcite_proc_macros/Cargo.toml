@@ -1,0 +1,12 @@
+[package]
+name = "calcite_proc_macros"
+version = "0.1.0"
+authors = ["Srinivasa <m.srinivasa1234@gmail.com>"]
+edition = "2018"
+
+[dependencies]
+quote = "^1"
+proc-macro2 = "^1"
+
+[lib]
+proc-macro = true
