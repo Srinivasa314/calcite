@@ -8,6 +8,11 @@ edition = "2018"
 deno_core = ">=0.49.0"
 calcite_proc_macros = { path = "calcite_proc_macros" }
 futures = "^0"
+rmp-serde = "^0"
+
+[dev-dependencies]
+serde_derive = "^1"
+serde = "^1"
 
 [[example]]
 name = "hello_world"

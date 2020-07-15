@@ -42,7 +42,27 @@ pub fn deno_op(_attr: TokenStream, function: TokenStream) -> TokenStream {
         _ => panic!(),
     };
     let __impl_fn_name = format_ident!("__impl_{}", fn_name);
-    let fn_body: Vec<TokenTree> = function.collect();
+    let fn_args = match function.next().unwrap() {
+        TokenTree::Group(g) => g.stream(),
+        _ => panic!(),
+    };
+    let fn_args: Vec<TokenTree> = fn_args.into_iter().collect();
+    let mut passed_args = vec![];
+    let mut arg_count = 0usize;
+    for token in fn_args.iter() {
+        if let TokenTree::Punct(p) = token {
+            if p.to_string() == "," {
+                passed_args.push(quote! {
+                    calcite::rmp_serde::from_read_ref(&args[#arg_count][..]).unwrap()
+                });
+                arg_count += 1;
+            }
+        }
+    }
+    passed_args.push(quote! {
+        calcite::rmp_serde::from_read_ref(&args[#arg_count][..]).unwrap()
+    });
+    let fn_rest: Vec<TokenTree> = function.collect();
     let pub_token = if ispub {
         quote! {pub}
     } else {
@@ -63,13 +83,13 @@ pub fn deno_op(_attr: TokenStream, function: TokenStream) -> TokenStream {
             deno_core::plugin_api::Op::Async(fut.boxed())
         }
     } else {
-        quote! {deno_core::plugin_api::Op::Sync(#__impl_fn_name(args))}
+        quote! {deno_core::plugin_api::Op::Sync(calcite::rmp_serde::to_vec_named(& #__impl_fn_name(#(#passed_args),*) ).unwrap().into_boxed_slice())}
     };
     (quote! {
         #pub_token fn #fn_name (_: &mut dyn deno_core::plugin_api::Interface, args: &mut [deno_core::plugin_api::ZeroCopyBuf]) -> deno_core::plugin_api::Op {
             #generated_fn_body
         }
 
-        #async_token fn #__impl_fn_name #(#fn_body)*
+        #async_token fn #__impl_fn_name ( #(#fn_args)* ) #(#fn_rest)*
     }).into()
 }
