@@ -4,4 +4,7 @@ await loadPlugin("hello_world", "file://target/debug/examples/")
 
 const test = importFromPlugin("test");
 
-console.log(`Got result ${test(["hello", "hi"], { num: 8, name: "abc" })} from plugin`)
+let arr = new Int32Array([1, 4, 7]);
+console.log(`Got result ${test(["hello", "hi"], { num: 8, name: "abc" }, arr)} from plugin`)
+
+console.log(`Value of arr after function call is ${arr}`)

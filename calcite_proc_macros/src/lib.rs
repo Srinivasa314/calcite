@@ -53,14 +53,14 @@ pub fn deno_op(_attr: TokenStream, function: TokenStream) -> TokenStream {
         if let TokenTree::Punct(p) = token {
             if p.to_string() == "," {
                 passed_args.push(quote! {
-                    calcite::rmp_serde::from_read_ref(&args[#arg_count][..]).unwrap()
+                    calcite::to_argument_type(&args[#arg_count])
                 });
                 arg_count += 1;
             }
         }
     }
     passed_args.push(quote! {
-        calcite::rmp_serde::from_read_ref(&args[#arg_count][..]).unwrap()
+        calcite::to_argument_type(&args[#arg_count])
     });
     let fn_rest: Vec<TokenTree> = function.collect();
     let pub_token = if ispub {

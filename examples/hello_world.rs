@@ -9,9 +9,11 @@ struct Test<'a> {
 }
 //use deno_core::ZeroCopyBuf;
 #[calcite::deno_op]
-fn test(a: Vec<&str>, b: Test) -> i32 {
+fn test(a: Vec<&str>, b: Test, mut c: calcite::ArrayBuffer<i32>) -> i32 {
     println!("Got first argument {:?}", a);
     println!("Got second argument {:?}", b);
+    println!("Got third argument {:?}", c.as_slice());
+    c.as_mut_slice()[0] = 45;
     8
 }
 
