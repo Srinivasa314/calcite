@@ -1,3 +1,8 @@
+//! # Calcite
+//!
+//! Calcite is a library to create deno plugins.
+//!
+
 pub use calcite_proc_macros::*;
 pub use futures;
 pub use rmp_serde;
@@ -6,12 +11,15 @@ pub trait FromZeroCopyBuf<'a> {
     fn from_zero_copy_buf(buff: &'a deno_core::plugin_api::ZeroCopyBuf) -> Self;
 }
 
+/// A mutable arraybuffer that can contain primitives like i32, u64, f32, etc.
 pub struct ArrayBuffer<'a, T>(&'a mut [T]);
 
 impl<'a, T> ArrayBuffer<'a, T> {
+    /// Get a mutable slice of the array
     pub fn as_mut_slice(&mut self) -> &mut [T] {
         self.0
     }
+    /// Get an immutable slice of the array
     pub fn as_slice(&self) -> &[T] {
         self.0
     }

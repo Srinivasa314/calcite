@@ -3,6 +3,11 @@ use proc_macro::TokenStream;
 use proc_macro2::TokenTree;
 use quote::{format_ident, quote};
 
+/// A macro that takes the functions to be exported for use in Deno as arguments
+/// # Syntax
+/// ```
+/// export!(function1,function2,...);
+/// ```
 #[proc_macro]
 pub fn export(tokens: TokenStream) -> TokenStream {
     let tokens = proc_macro2::TokenStream::from(tokens)
@@ -20,6 +25,7 @@ pub fn export(tokens: TokenStream) -> TokenStream {
     .into()
 }
 
+/// When placed above a function it converts the function to a deno op of the same name.
 #[proc_macro_attribute]
 pub fn deno_op(_attr: TokenStream, function: TokenStream) -> TokenStream {
     let mut function = proc_macro2::TokenStream::from(function).into_iter();
