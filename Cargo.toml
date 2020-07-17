@@ -17,5 +17,9 @@ serde = "^1"
 serde_derive = "^1"
 
 [[example]]
-name = "hello_world"
+name = "sync"
+crate-type = ["cdylib"]
+
+[[example]]
+name = "async"
 crate-type = ["cdylib"]
