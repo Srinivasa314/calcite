@@ -37,3 +37,13 @@ impl<'a, T: serde::Deserialize<'a>> FromZeroCopyBuf<'a> for T {
 pub fn to_argument_type<'a, T: FromZeroCopyBuf<'a>>(buff: &'a deno_core::ZeroCopyBuf) -> T {
     T::from_zero_copy_buf(buff)
 }
+
+#[macro_use]
+extern crate serde_derive;
+
+#[derive(Serialize)]
+#[serde(rename_all = "camelCase")]
+pub struct AsyncResult<T, E> {
+    pub command_id: usize,
+    pub result: Result<T, E>,
+}
