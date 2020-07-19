@@ -73,7 +73,7 @@ use calcite::ReturnBuffer;
 
 #[calcite::deno_op]
 fn return_buff() -> ReturnBuffer {
-    ReturnBuffer::from_bytes("Hey".to_string().into_bytes());
+    ReturnBuffer::from_bytes("Hey".to_string().into_bytes())
 }
  
 ```
