@@ -10,7 +10,7 @@ repository = "https://github.com/Srinivasa314/calcite"
 
 [dependencies]
 deno_core = ">=0.49.0"
-calcite_proc_macros = { path = "calcite_proc_macros" }
+calcite_proc_macros = "^0"
 futures = "^0"
 rmp-serde = "^0"
 serde = "^1"
