@@ -64,7 +64,7 @@ Now we can run it as before.
 
 ## ReturnBuffer
 Values returned from functions exported by calcite are serialized using msgpack.
-Say you want to return a Vec<u8> but do not want this serialization to happen. Then you can use `calcite::ReturnBuffer`
+Say you want to return a `Vec<u8>` but do not want this serialization to happen. Then you can use `calcite::ReturnBuffer`
 
 For example,
 
