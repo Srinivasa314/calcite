@@ -1,4 +1,4 @@
-import { loadPlugin, importFromPlugin } from 'https://denopkg.com/Srinivasa314/calcite-ts/calcite.ts';
+import { loadPlugin, importFromPlugin } from 'https://denopkg.com/Srinivasa314/calcite-ts@1.0/calcite.ts';
 await loadPlugin("sync", "file://target/debug/examples/")
 
 const array_buffer_example = importFromPlugin('array_buffer_example') as (arr: Int32Array, num: number) => void
