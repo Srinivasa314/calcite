@@ -97,12 +97,12 @@ pub fn deno_op(_attr: TokenStream, function: TokenStream) -> TokenStream {
                     command_id,
                     result
                 };
-                calcite::rmp_serde::to_vec_named(&result).unwrap().into_boxed_slice()
+                Into::<calcite::ReturnBuffer>::into(result).inner()
             };
             deno_core::plugin_api::Op::Async(fut.boxed())
         }
     } else {
-        quote! {deno_core::plugin_api::Op::Sync(calcite::rmp_serde::to_vec_named(& #__impl_fn_name(#(#passed_args),*) ).unwrap().into_boxed_slice())}
+        quote! {deno_core::plugin_api::Op::Sync(Into::<calcite::ReturnBuffer>::into(#__impl_fn_name(#(#passed_args),*)).inner() )}
     };
 
     (quote! {

@@ -5,7 +5,6 @@
 
 pub use calcite_proc_macros::*;
 pub use futures;
-pub use rmp_serde;
 
 pub trait FromZeroCopyBuf<'a> {
     fn from_zero_copy_buf(buff: &'a deno_core::plugin_api::ZeroCopyBuf) -> Self;
@@ -54,4 +53,21 @@ extern crate serde_derive;
 pub struct AsyncResult<T, E> {
     pub command_id: usize,
     pub result: Result<T, E>,
+}
+
+pub struct ReturnBuffer(Box<[u8]>);
+
+impl<T: serde::Serialize> From<T> for ReturnBuffer {
+    fn from(t: T) -> Self {
+        Self(rmp_serde::to_vec_named(&t).unwrap().into_boxed_slice())
+    }
+}
+
+impl ReturnBuffer {
+    pub fn inner(self) -> Box<[u8]> {
+        self.0
+    }
+    pub fn from_bytes(bytes: Vec<u8>) -> Self {
+        Self(bytes.into_boxed_slice())
+    }
 }

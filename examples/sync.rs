@@ -29,9 +29,15 @@ fn multiple_arguments_example(x: f32, y: (&str, &str)) {
     println!("Got arguments x:{} y:{:?}", x, y);
 }
 
+#[calcite::deno_op]
+fn return_buffer() -> calcite::ReturnBuffer {
+    calcite::ReturnBuffer::from_bytes(vec![5, 7, 1, 3])
+}
+
 calcite::export!(
     array_buffer_example,
     struct_example,
     return_example,
-    multiple_arguments_example
+    multiple_arguments_example,
+    return_buffer
 );

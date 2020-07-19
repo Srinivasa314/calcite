@@ -29,4 +29,4 @@ sleep(3).then((response) => console.log(response))
 ```
 
 NOTE:
-Unfortunately ArrayBuffers cannot be modified from async functions
+Unfortunately ArrayBuffer and ReturnBuffer cannot be used in async functions

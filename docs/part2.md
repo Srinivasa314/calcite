@@ -61,3 +61,25 @@ console.log(a);
 ```
 
 Now we can run it as before.
+
+## ReturnBuffer
+Values returned from functions exported by calcite are serialized using msgpack.
+Say you want to return a Vec<u8> but do not want this serialization to happen. Then you can use `calcite::ReturnBuffer`
+
+For example,
+
+```rust
+use calcite::ReturnBuffer;
+
+#[calcite::deno_op]
+fn return_buff() -> ReturnBuffer {
+    ReturnBuffer::from_bytes("Hey".to_string().into_bytes());
+}
+ 
+```
+
+The returnRawBuffer option must be set to true while importing the function
+```ts
+const return_buff = importFromPlugin("return_buff", {returnRawBuffer: true}) as () => Uint8Array
+console.log(return_buff())
+```
