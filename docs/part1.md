@@ -14,7 +14,7 @@ Any function can be used in deno if `#[calcite::deno_op]` is put above it.
 For example let us create a function to multiply two numbers
 ```rust
 #[calcite::deno_op]
-fn multiply(a:f64, b:f64) -> f64 {
+fn multiply (a:f64, b:f64) -> f64 {
     a*b
 }
 ```
@@ -51,7 +51,7 @@ const multiply = importFromPlugin('multiply') as (a:number, b:number) => number
 
 Then you can use the multiply function
 ```ts
-console.log(multiply(1.1,2.2))
+console.log(multiply(1.1, 2.2))
 ```
 
 Then we can run using

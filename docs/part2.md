@@ -14,7 +14,7 @@ struct Person<'a> {
 Then we will declare the function
 ```rust
 #[calcite::deno_op]
-fn is_adult(p:Person, age_limit:u32) -> bool {
+fn is_adult (p:Person, age_limit:u32) -> bool {
     if p.age > age_limit {
         true
     }
@@ -46,7 +46,7 @@ Let us create a function to sort an array of numbers.
 Calcite provides the ArrayBuffer type to do this. So just simply replace `&[u8]`, `&[f32]` in rust functions with the ArrayBuffer type.
 ```rust
 #[calcite::deno_op]
-fn sort(mut nums:calcite::ArrayBuffer<u32>) {
+fn sort (mut nums:calcite::ArrayBuffer<u32>) {
     nums.as_mut_slice().sort()
 }
 ```

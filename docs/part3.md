@@ -4,12 +4,12 @@ Let us create an async function sleep
 ```rust
 #[calcite::deno_op]
 async fn sleep(secs:u64) -> Result<String,()> {
-    let (tx, rx) = futures::channel::oneshot::channel(); //Create a channel
-    std::thread::spawn(move || { //Spawn a thread
-        std::thread::sleep(std::time::Duration::from_secs(secs)); // Sleep
-        tx.send(()).unwrap(); // Send () to channel after sleeping
+    let (tx, rx) = futures::channel::oneshot::channel();    //Create a channel
+    std::thread::spawn(move || {    //Spawn a thread
+        std::thread::sleep(std::time::Duration::from_secs(secs));   // Sleep
+        tx.send(()).unwrap();   // Send () to channel after sleeping
     });
-    rx.await.unwrap(); // await message from channel
+    rx.await.unwrap();  // await message from channel
     Ok(format!("Slept for {} seconds", secs))
 }
 ```
@@ -25,7 +25,7 @@ Then call it from Deno!
 
 ```ts
 const sleep = importAsyncFromPlugin("sleep") as (secs:number) => Promise<String>
-sleep(3).then((response)=>console.log(response))
+sleep(3).then((response) => console.log(response))
 ```
 
 NOTE:
