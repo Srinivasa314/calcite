@@ -57,6 +57,7 @@ pub struct AsyncResult<T, E> {
     pub result: Result<T, E>,
 }
 
+/// A struct used when returning a raw unserialized buffer
 pub struct ReturnBuffer(Box<[u8]>);
 
 impl<T: serde::Serialize> From<T> for ReturnBuffer {
@@ -69,6 +70,7 @@ impl ReturnBuffer {
     pub fn inner(self) -> Box<[u8]> {
         self.0
     }
+    /// Construct a ReturnBuffer from bytes
     pub fn from_bytes(bytes: Vec<u8>) -> Self {
         Self(bytes.into_boxed_slice())
     }
