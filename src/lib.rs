@@ -2,6 +2,8 @@
 //!
 //! Calcite is a library to create deno plugins.
 //!
+//! Refer the [docs](https://github.com/Srinivasa314/calcite/tree/master/docs)
+//!
 
 pub use calcite_proc_macros::*;
 pub use futures;
