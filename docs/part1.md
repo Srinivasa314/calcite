@@ -1,4 +1,4 @@
-Calcite allows use to use rust functions in Deno almost effortlessly. In this guide we will create a basic Deno plugin.
+Calcite allows you to use rust functions in Deno almost effortlessly. In this guide we will create a basic Deno plugin.
 
 First create a new project
 ```
@@ -10,8 +10,8 @@ Make sure you have the __latest__ version of Deno
 
 Then add calcite and deno_core as a dependency in Cargo.toml
 
-Any function can be used in deno if `#[calcite::deno_op]` is put above it
-For example let use create a function to multiply two numbers
+Any function can be used in deno if `#[calcite::deno_op]` is put above it.
+For example let us create a function to multiply two numbers
 ```rust
 #[calcite::deno_op]
 fn multiply(a:f64, b:f64) -> f64 {
