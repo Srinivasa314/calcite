@@ -13,3 +13,5 @@ cargo build --example async
 deno run --unstable --allow-plugin --allow-read --allow-write examples/async.ts
 ```
 
+# Example libraries created using calcite
+* https://github.com/Srinivasa314/tinyfiledialogs-deno/
