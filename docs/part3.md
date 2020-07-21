@@ -3,7 +3,7 @@ Async functions in javascript can either give a response or be rejected for some
 Let us create an async function sleep
 ```rust
 #[calcite::deno_op]
-async fn sleep(secs:u64) -> Result<String,()> {
+async fn sleep(secs: u64) -> Result<String,()> {
     let (tx, rx) = futures::channel::oneshot::channel();    //Create a channel
     std::thread::spawn(move || {    //Spawn a thread
         std::thread::sleep(std::time::Duration::from_secs(secs));   // Sleep
@@ -24,7 +24,7 @@ import { loadPlugin, importFromPlugin, importAsyncFromPlugin } from 'https://den
 Then call it from Deno!
 
 ```ts
-const sleep = importAsyncFromPlugin("sleep") as (secs:number) => Promise<String>
+const sleep = importAsyncFromPlugin("sleep") as (secs: number) => Promise<String>
 sleep(3).then((response) => console.log(response))
 ```
 
