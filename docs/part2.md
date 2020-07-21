@@ -14,7 +14,7 @@ struct Person<'a> {
 Then we will declare the function
 ```rust
 #[calcite::deno_op]
-fn is_adult (p:Person, age_limit:u32) -> bool {
+fn is_adult (p: Person, age_limit: u32) -> bool {
     if p.age > age_limit {
         true
     }
@@ -30,7 +30,7 @@ calcite::export!(multiply, is_adult);
 
 Now let us call it from Deno
 ```ts
-const is_adult = importFromPlugin('is_adult') as (p:{name:string, age:number}, age_limit:number) => boolean
+const is_adult = importFromPlugin('is_adult') as (p: {name: string, age: number}, age_limit: number) => boolean
 console.log(is_adult({name:'abc', age:16}, 18))
 console.log(is_adult({name:'xyz', age:25}, 23))
 ```
@@ -46,7 +46,7 @@ Let us create a function to sort an array of numbers.
 Calcite provides the ArrayBuffer type to do this. So just simply replace `&[u8]`, `&[f32]` in rust functions with the ArrayBuffer type.
 ```rust
 #[calcite::deno_op]
-fn sort (mut nums:calcite::ArrayBuffer<u32>) {
+fn sort (mut nums: calcite::ArrayBuffer<u32>) {
     nums.as_mut_slice().sort()
 }
 ```
@@ -54,7 +54,7 @@ Export the function as before.
 
 In our typescript file
 ```ts
-const sort = importFromPlugin("sort") as (nums:Uint32Array) => void;
+const sort = importFromPlugin("sort") as (nums: Uint32Array) => void;
 let a = new Uint32Array([9, 3, 7, 10]);
 sort(a);
 console.log(a);
