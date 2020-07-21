@@ -58,9 +58,9 @@ pub fn deno_op(_attr: TokenStream, function: TokenStream) -> TokenStream {
     let mut passed_args = vec![];
     let mut arg_count = if isasync { 1usize } else { 0usize };
 
-    for token in fn_args.iter() {
+    for (i, token) in fn_args.iter().enumerate() {
         if let TokenTree::Punct(p) = token {
-            if p.to_string() == "," {
+            if p.to_string() == "," && i != fn_args.len() - 1 {
                 passed_args.push(quote! {
                     calcite::to_argument_type(&args[#arg_count])
                 });
