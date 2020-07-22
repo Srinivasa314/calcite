@@ -14,4 +14,4 @@ deno run --unstable --allow-plugin --allow-read --allow-write examples/async.ts
 ```
 
 # Example libraries created using calcite
-* https://github.com/Srinivasa314/tinyfiledialogs-deno/
+* [tinyfiledialogs-deno](https://github.com/Srinivasa314/tinyfiledialogs-deno/): A port of tinyfiledialogs-rs for use in Deno
