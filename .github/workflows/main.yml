@@ -17,14 +17,6 @@ jobs:
         os: [macos-latest, ubuntu-latest, windows-latest]
     steps:
     - uses: actions/checkout@v2
-    - name: Cache rust dependencies
-      uses: actions/cache@v2
-      with:
-        path: |
-         ~/.cargo/registry
-         ~/.cargo/git
-         target
-        key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
     - uses: denolib/setup-deno@v2
       with:
         deno-version: v1.x      
