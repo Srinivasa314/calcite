@@ -17,7 +17,7 @@ As usual export it. Add futures to dependencies as we are using it.
 
 We need to import importAsyncFromPlugin 
 ```ts
-import { loadPlugin, importFromPlugin, importAsyncFromPlugin } from 'https://deno.land/x/calcite@1.0/calcite.ts';
+import { loadPlugin, importFromPlugin, importAsyncFromPlugin } from 'https://deno.land/x/calcite@2.0/calcite.ts';
 
 ```
 

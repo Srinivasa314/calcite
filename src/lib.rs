@@ -39,7 +39,7 @@ impl<'a, T> FromZeroCopyBuf<'a> for ArrayBuffer<'a, T> {
 
 impl<'a, T: serde::Deserialize<'a>> FromZeroCopyBuf<'a> for T {
     fn from_zero_copy_buf(buff: &'a deno_core::ZeroCopyBuf) -> Self {
-        rmp_serde::from_read_ref(buff).expect("Wrong argument type")
+        serde_json::from_slice(buff).expect("Wrong argument type")
     }
 }
 
@@ -62,7 +62,7 @@ pub struct ReturnBuffer(Box<[u8]>);
 
 impl<T: serde::Serialize> From<T> for ReturnBuffer {
     fn from(t: T) -> Self {
-        Self(rmp_serde::to_vec_named(&t).unwrap().into_boxed_slice())
+        Self(serde_json::to_vec(&t).unwrap().into_boxed_slice())
     }
 }
 

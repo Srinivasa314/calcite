@@ -1,6 +1,6 @@
 The exported functions can take any type and return any type
 For example let us create a function that checks whether a person is an adult. 
-Structs passed and returned are stored in a binary format called msgpack.To serialize and deserialize structs add serde_derive and serde to dependencies.Let us declare a struct Person
+Values passed to functions and returned from functions exported by calcite are stored as JSON. To serialize and deserialize structs add serde_derive and serde to dependencies.Let us declare a struct Person
 ```rust
 #[macro_use]
 extern crate serde_derive;
@@ -63,8 +63,7 @@ console.log(a);
 Now we can run it as before.
 
 ## ReturnBuffer
-Values returned from functions exported by calcite are serialized using msgpack.
-Say you want to return a `Vec<u8>` but do not want this serialization to happen. Then you can use `calcite::ReturnBuffer`
+Values returned from functions exported by calcite are serialized using JSON. Say you want to return a `Vec<u8>` but do not want this serialization to happen. Then you can use `calcite::ReturnBuffer`
 
 For example,
 
