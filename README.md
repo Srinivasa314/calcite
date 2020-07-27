@@ -1,4 +1,6 @@
 # Calcite
+[![Crates.io](https://img.shields.io/crates/v/calcite)](https://crates.io/crates/calcite)
+
 Calcite is a library for easily creating deno plugins.
 
 # Getting Started
