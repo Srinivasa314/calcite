@@ -40,6 +40,8 @@ Now we can build it and run it as before
 NOTE:
 Since the plugin is cached in .deno_plugins the new built plugin will not be used so delete the cached plugin
 
+Calcite uses serde_json for serializing and deserializing so any type that implements Serialize and Deserialize traits of serde can be used. 
+
 ## ArrayBuffer
 To modify javascript/typescript arrays you must use Int32Array, Float64Array ,etc.
 Let us create a function to sort an array of numbers.

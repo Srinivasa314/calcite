@@ -34,10 +34,16 @@ fn return_buffer() -> calcite::ReturnBuffer {
     calcite::ReturnBuffer::from_bytes(vec![5, 7, 1, 3])
 }
 
+#[calcite::deno_op]
+fn name(x: serde_json::Value) -> serde_json::Value {
+    x["name"].clone()
+}
+
 calcite::export!(
     array_buffer_example,
     struct_example,
     return_example,
     multiple_arguments_example,
-    return_buffer
+    return_buffer,
+    name
 );

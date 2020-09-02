@@ -39,7 +39,7 @@ Then create a file called my-deno-plugin.ts and first import calcite-ts
 import { loadPlugin, importFromPlugin } from 'https://deno.land/x/calcite@2.1/calcite.ts';
 ```
 
-Then load the plugin. The plugin is usually loaded from a website where the binaries are located. They are then cached based on the url. For now we will import it from our local filesystem. The plugin is located at target/debug
+Then load the plugin. The plugin is usually loaded from a website where the plugin binaries are located. They are then cached based on the url. For now we will import it from our local filesystem. The plugin is a .so file on linux, a .dylib file on OSX and a .dll file on windows and it is located in target/debug after building.
 ```ts
 await loadPlugin("my_deno_plugin", "file://target/debug")
 ```

@@ -21,6 +21,7 @@ const return_buffer = importFromPlugin(
   "return_buffer",
   { returnRawBuffer: true },
 ) as () => Uint8Array;
+const name = importFromPlugin("name") as (x: any) => any
 
 let a = new Int32Array(5);
 array_buffer_example(a, 8);
@@ -33,3 +34,6 @@ console.log(
 
 multiple_arguments_example(8.9, ["abc", "xyz"]);
 console.log(return_buffer());
+
+let o = { name: "abc" }
+console.log(name(o))
