@@ -11,7 +11,7 @@ struct Person<'a> {
     age: u32
 }
 ```
-Then we will declare the function
+Then we can declare the function
 ```rust
 #[calcite::deno_op]
 fn is_adult (p: Person, age_limit: u32) -> bool {
@@ -52,7 +52,7 @@ fn sort (mut nums: calcite::ArrayBuffer<u32>) {
 ```
 Export the function as before.
 
-In our typescript file
+In the typescript file add
 ```ts
 const sort = importFromPlugin("sort") as (nums: Uint32Array) => void;
 let a = new Uint32Array([9, 3, 7, 10]);

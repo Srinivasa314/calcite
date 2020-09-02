@@ -8,7 +8,7 @@ First create a new project
 
 Make sure you have the __latest__ version of Deno
 
-Then add calcite and deno_core as a dependency in Cargo.toml
+Then add calcite and deno_core as dependencies in Cargo.toml
 
 Any function can be used in deno if `#[calcite::deno_op]` is put above it.
 For example let us create a function to multiply two numbers
@@ -39,7 +39,7 @@ Then create a file called my-deno-plugin.ts and first import calcite-ts
 import { loadPlugin, importFromPlugin } from 'https://deno.land/x/calcite@2.1/calcite.ts';
 ```
 
-Then load the plugin. The plugin is usually loaded from a website where the binaries are located.They are then cached based on the url. For now we will import it from our local filesystem. The plugin is located at target/debug
+Then load the plugin. The plugin is usually loaded from a website where the binaries are located. They are then cached based on the url. For now we will import it from our local filesystem. The plugin is located at target/debug
 ```ts
 await loadPlugin("my_deno_plugin", "file://target/debug")
 ```

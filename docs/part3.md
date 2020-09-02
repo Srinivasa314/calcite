@@ -1,6 +1,7 @@
+## Async Functions
 Before reading this knowledge of async rust functions is needed.
-Async functions in javascript can either give a response or be rejected for some reason. So async functions exported to deno must return a `Result<T,E>`.
-Let us create an async function sleep
+Async functions in javascript can either give a value or be rejected for some reason. So async functions exported to deno must return a `Result<T,E>`.
+Let us create an async function called sleep
 ```rust
 #[calcite::deno_op]
 async fn sleep(secs: u64) -> Result<String,()> {
@@ -13,9 +14,9 @@ async fn sleep(secs: u64) -> Result<String,()> {
     Ok(format!("Slept for {} seconds", secs))
 }
 ```
-As usual export it. Add futures to dependencies as we are using it.
+As usual export it. Add `futures` to dependencies as we are using it.
 
-We need to import importAsyncFromPlugin 
+We need to import it using importAsyncFromPlugin 
 ```ts
 import { loadPlugin, importFromPlugin, importAsyncFromPlugin } from 'https://deno.land/x/calcite@2.1/calcite.ts';
 
