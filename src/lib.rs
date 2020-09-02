@@ -27,7 +27,7 @@ impl<'a, T> ArrayBuffer<'a, T> {
 }
 
 impl<'a, T> FromZeroCopyBuf<'a> for ArrayBuffer<'a, T> {
-    fn from_zero_copy_buf(buff: &deno_core::ZeroCopyBuf) -> Self {
+    fn from_zero_copy_buf(buff: &deno_core::plugin_api::ZeroCopyBuf) -> Self {
         unsafe {
             Self(std::slice::from_raw_parts_mut(
                 buff[..].as_ptr() as *mut T,
@@ -38,12 +38,12 @@ impl<'a, T> FromZeroCopyBuf<'a> for ArrayBuffer<'a, T> {
 }
 
 impl<'a, T: serde::Deserialize<'a>> FromZeroCopyBuf<'a> for T {
-    fn from_zero_copy_buf(buff: &'a deno_core::ZeroCopyBuf) -> Self {
+    fn from_zero_copy_buf(buff: &'a deno_core::plugin_api::ZeroCopyBuf) -> Self {
         serde_json::from_slice(buff).expect("Wrong argument type")
     }
 }
 
-pub fn to_argument_type<'a, T: FromZeroCopyBuf<'a>>(buff: &'a deno_core::ZeroCopyBuf) -> T {
+pub fn to_argument_type<'a, T: FromZeroCopyBuf<'a>>(buff: &'a deno_core::plugin_api::ZeroCopyBuf) -> T {
     T::from_zero_copy_buf(buff)
 }
 
