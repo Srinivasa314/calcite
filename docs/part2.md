@@ -1,6 +1,9 @@
-The exported functions can take any type and return any type
+The exported functions can take any type and return any type.
+
 For example let us create a function that checks whether a person is an adult. 
-Values passed to functions and returned from functions exported by calcite are stored as JSON. To serialize and deserialize structs add serde_derive and serde to dependencies.Let us declare a struct Person
+Values passed to functions and returned from functions exported by calcite are stored as JSON. To serialize and deserialize structs add serde_derive and serde to dependencies.
+
+Let us declare a struct Person
 ```rust
 #[macro_use]
 extern crate serde_derive;
