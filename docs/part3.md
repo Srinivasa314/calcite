@@ -34,4 +34,4 @@ NOTE:
 Unfortunately ArrayBuffer and ReturnBuffer cannot be used in async functions
 
 ## Using dynamically typed variables
-Dynamically typed variables can be passed to and returned from functions exported using calcite. You can do this by using the `Value` type from the `serde_json` crate in the function arguments or as the return type. `Value` has may useful methods and you can view its documentation [here](https://docs.serde.rs/serde_json/enum.Value.html).
+Dynamically typed variables can be passed to and returned from functions exported using calcite. You can do this by using the `Value` type from the `serde_json` crate in the function arguments or as the return type. `Value` has many useful methods and you can view its documentation [here](https://docs.serde.rs/serde_json/enum.Value.html).
