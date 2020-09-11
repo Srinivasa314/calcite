@@ -1,6 +1,6 @@
 [package]
 name = "calcite"
-version = "0.2.2"
+version = "0.2.3"
 authors = ["Srinivasa <m.srinivasa1234@gmail.com>"]
 edition = "2018"
 description = "A library to create deno plugins"
@@ -9,7 +9,7 @@ license = "MIT OR Apache-2.0"
 repository = "https://github.com/Srinivasa314/calcite"
 
 [dependencies]
-deno_core = "0.55.0"
+deno_core = "0.56.0"
 calcite_proc_macros = { path = "calcite_proc_macros", version = "0.1.2" }
 futures = "0.3.5"
 serde = "1.0.115"
