@@ -18,7 +18,7 @@ pub fn export(tokens: TokenStream) -> TokenStream {
         });
     (quote! {
         #[no_mangle]
-        pub fn deno_plugin_init(interface: &mut dyn deno_core::plugin_api::Interface) {
+        pub fn deno_plugin_init(interface: &mut dyn calcite::deno_core::plugin_api::Interface) {
             #(interface.register_op(stringify!(#tokens), #tokens);)*
         }
     })
@@ -99,14 +99,14 @@ pub fn deno_op(_attr: TokenStream, function: TokenStream) -> TokenStream {
                 };
                 Into::<calcite::ReturnBuffer>::into(result).inner()
             };
-            deno_core::plugin_api::Op::Async(fut.boxed())
+            calcite::deno_core::plugin_api::Op::Async(fut.boxed())
         }
     } else {
-        quote! {deno_core::plugin_api::Op::Sync(Into::<calcite::ReturnBuffer>::into(#__impl_fn_name(#(#passed_args),*)).inner() )}
+        quote! {calcite::deno_core::plugin_api::Op::Sync(Into::<calcite::ReturnBuffer>::into(#__impl_fn_name(#(#passed_args),*)).inner() )}
     };
 
     (quote! {
-        #pub_token fn #fn_name (_: &mut dyn deno_core::plugin_api::Interface, args: &mut [deno_core::plugin_api::ZeroCopyBuf]) -> deno_core::plugin_api::Op {
+        #pub_token fn #fn_name (_: &mut dyn calcite::deno_core::plugin_api::Interface, args: &mut [calcite::deno_core::plugin_api::ZeroCopyBuf]) -> calcite::deno_core::plugin_api::Op {
             #generated_fn_body
         }
 

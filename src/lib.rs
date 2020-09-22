@@ -7,6 +7,7 @@
 
 pub use calcite_proc_macros::*;
 pub use futures;
+pub use deno_core;
 
 pub trait FromZeroCopyBuf<'a> {
     fn from_zero_copy_buf(buff: &'a deno_core::plugin_api::ZeroCopyBuf) -> Self;

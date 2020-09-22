@@ -8,7 +8,7 @@ First create a new project
 
 Make sure you have the __latest__ version of Deno
 
-Then add calcite and deno_core as dependencies in Cargo.toml
+Then add calcite to Cargo.toml
 
 Any function can be used in deno if `#[calcite::deno_op]` is put above it.
 For example let us create a function to multiply two numbers
