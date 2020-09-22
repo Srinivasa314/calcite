@@ -1,7 +1,7 @@
 import {
   loadPlugin,
   importAsyncFromPlugin,
-} from "https://deno.land/x/calcite@2.1/calcite.ts";
+} from "https://deno.land/x/calcite@2.3/calcite.ts";
 await loadPlugin("async", "file://target/debug/examples/");
 
 const sleep_for = importAsyncFromPlugin("sleep_for") as (
