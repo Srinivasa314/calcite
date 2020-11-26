@@ -1,7 +1,7 @@
 import {
   loadPlugin,
   importFromPlugin,
-} from "https://deno.land/x/calcite@2.3/calcite.ts";
+} from "https://deno.land/x/calcite/calcite.ts";
 await loadPlugin("sync", "file://target/debug/examples/");
 
 const array_buffer_example = importFromPlugin("array_buffer_example") as (

@@ -36,7 +36,7 @@ cargo build
 
 Then create a file called my-deno-plugin.ts and first import calcite-ts 
 ```ts
-import { loadPlugin, importFromPlugin } from 'https://deno.land/x/calcite@2.3/calcite.ts';
+import { loadPlugin, importFromPlugin } from 'https://deno.land/x/calcite/calcite.ts';
 ```
 
 Then load the plugin. The plugin is usually loaded from a website where the plugin binaries are located. They are then cached based on the url. For now we will import it from our local filesystem. The plugin is a .so file on linux, a .dylib file on OSX and a .dll file on windows and it is located in target/debug after building.
