@@ -10,9 +10,9 @@ Refer [the docs](https://github.com/Srinivasa314/calcite/tree/master/docs)
 To run the [examples](https://github.com/Srinivasa314/calcite/tree/master/examples) do
 ```
 cargo build --example sync
-deno run --unstable --allow-plugin --allow-read --allow-write examples/sync.ts
+deno run --unstable --allow-all examples/sync.ts
 cargo build --example async
-deno run --unstable --allow-plugin --allow-read --allow-write examples/async.ts
+deno run --unstable --allow-all examples/async.ts
 ```
 
 # Example libraries created using calcite
