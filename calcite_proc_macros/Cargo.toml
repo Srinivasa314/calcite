@@ -7,7 +7,7 @@ license = "MIT OR Apache-2.0"
 description = "A helper library for calcite"
 
 [dependencies]
-quote = "1.0.7"
+quote = "1.0.8"
 proc-macro2 = "1.0.24"
 
 [lib]
